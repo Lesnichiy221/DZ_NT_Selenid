@@ -17,6 +17,9 @@ import static com.codeborne.selenide.Selenide.open;
 
 class CardTestSuccsesfuly {
 
+    LocalDate deliveryDateCard = LocalDate.now().plusDays(3);
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+    String dateText = deliveryDateCard.format(formatter);
 
     @BeforeEach
     void setUp() {
@@ -25,10 +28,6 @@ class CardTestSuccsesfuly {
 
     @Test
     void shouldReturnSuccessIfFieldsAreFilledInCorrectl(){
-
-        LocalDate deliveryDateCard = LocalDate.now().plusDays(3);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        String dateText = deliveryDateCard.format(formatter);
 
         $("[data-test-id=city] [placeholder='Город']").setValue("Краснодар");
         $("[data-test-id=date] [class='input__box'] [placeholder='Дата встречи']").doubleClick().sendKeys(Keys.BACK_SPACE);
@@ -42,7 +41,7 @@ class CardTestSuccsesfuly {
                 .shouldHave(Condition.exactText("Встреча успешно забронирована на " + dateText));
     }
     @Test
-    void ShouldReturnSuccsesfulyIfNameOrSurnameHaveDefise(){
+    void shouldReturnSuccsesfulyIfNameOrSurnameHaveDefise(){
         LocalDate DeliveryDateCard = LocalDate.now().plusDays(3);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         String dateText = DeliveryDateCard.format(formatter);
@@ -62,10 +61,7 @@ class CardTestSuccsesfuly {
     }
 
     @Test
-    void ShouldReturnSuccsesfulyIfCityHaveDefise(){
-        LocalDate DeliveryDateCard = LocalDate.now().plusDays(3);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        String dateText = DeliveryDateCard.format(formatter);
+    void shouldReturnSuccsesfulyIfCityHaveDefise(){
 
         $("[data-test-id=city] [placeholder='Город']").setValue("Ростов-на-Дону");
         $("[data-test-id=date] [class='input__box'] [placeholder='Дата встречи']").doubleClick().sendKeys(Keys.BACK_SPACE);
