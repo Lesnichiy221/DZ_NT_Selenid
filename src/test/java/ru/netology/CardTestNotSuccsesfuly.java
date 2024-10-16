@@ -22,6 +22,7 @@ public class CardTestNotSuccsesfuly {
     String dateText = deliveryDateCard.format(formatter);
 
 
+
     @BeforeEach
     void setUp() {
         open("http://localhost:9999");
